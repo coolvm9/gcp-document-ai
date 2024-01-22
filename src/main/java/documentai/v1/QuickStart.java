@@ -17,13 +17,13 @@
 package documentai.v1;
 
 // [START documentai_quickstart]
-import com.google.cloud.documentai.v1.Document;
-import com.google.cloud.documentai.v1.DocumentProcessorServiceClient;
-import com.google.cloud.documentai.v1.DocumentProcessorServiceSettings;
-import com.google.cloud.documentai.v1.ProcessRequest;
-import com.google.cloud.documentai.v1.ProcessResponse;
-import com.google.cloud.documentai.v1.RawDocument;
+
+import com.google.cloud.ServiceOptions;
+import com.google.cloud.documentai.v1.*;
 import com.google.protobuf.ByteString;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -32,13 +32,14 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
 
 public class QuickStart {
+  private static final Logger logger = LoggerFactory.getLogger(QuickStart.class);
   public static void main(String[] args)
       throws IOException, InterruptedException, ExecutionException, TimeoutException {
     // TODO(developer): Replace these variables before running the sample.
-    String projectId = "your-project-id";
-    String location = "your-project-location"; // Format is "us" or "eu".
-    String processorId = "your-processor-id";
-    String filePath = "path/to/input/file.pdf";
+    String projectId = ServiceOptions.getDefaultProjectId(); // get from Application Default Credentials
+    String location = "us";//"your-project-location"; // Format is "us" or "eu".
+    String processorId = "f45bf1a356e94e4c";//"your-processor-id";
+    String filePath = "resources/multi_document.pdf";//"path/to/input/file.pdf";
     quickStart(projectId, location, processorId, filePath);
   }
 

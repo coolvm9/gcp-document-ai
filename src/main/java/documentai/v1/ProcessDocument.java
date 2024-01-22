@@ -18,6 +18,7 @@ package documentai.v1;
 
 // [START documentai_process_document]
 
+import com.google.cloud.ServiceOptions;
 import com.google.cloud.documentai.v1.Document;
 import com.google.cloud.documentai.v1.DocumentProcessorServiceClient;
 import com.google.cloud.documentai.v1.DocumentProcessorServiceSettings;
@@ -36,11 +37,11 @@ public class ProcessDocument {
   public static void processDocument()
       throws IOException, InterruptedException, ExecutionException, TimeoutException {
     // TODO(developer): Replace these variables before running the sample.
-    String projectId = "your-project-id";
-    String location = "your-project-location"; // Format is "us" or "eu".
-    String processerId = "your-processor-id";
-    String filePath = "path/to/input/file.pdf";
-    processDocument(projectId, location, processerId, filePath);
+    String projectId = ServiceOptions.getDefaultProjectId(); // get from Application Default Credentials
+    String location = "us";//"your-project-location"; // Format is "us" or "eu".
+    String processorId = "f45bf1a356e94e4c";//"your-processor-id";
+    String filePath = "resources/multi_document.pdf";//"path/to/input/file.pdf";
+    processDocument(projectId, location, processorId, filePath);
   }
 
   public static void processDocument(
